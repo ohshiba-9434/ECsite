@@ -8,6 +8,7 @@ import com.internousdev.ecsite.util.DBConnector;
 
 public class UserDeleteCompleteDAO {
 
+	//ユーザー情報の削除
 	public int userDataDelete(String loginId) throws SQLException {
 
 		DBConnector db = new DBConnector();

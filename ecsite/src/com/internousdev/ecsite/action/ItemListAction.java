@@ -20,7 +20,7 @@ public class ItemListAction extends ActionSupport implements SessionAware {
 
 		itemList = itemListDAO.getItemList();
 
-//		商品テーブルが空なら「ありません」とメッセージを表示する
+		//"商品情報はありません。"の表示
 		if (!(itemList.size() > 0)) {
 			itemList = null;
 		}

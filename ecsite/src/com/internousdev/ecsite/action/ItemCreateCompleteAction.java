@@ -19,6 +19,7 @@ public class ItemCreateCompleteAction extends ActionSupport implements SessionAw
 
 		ItemCreateConpleteDAO dao = new ItemCreateConpleteDAO();
 
+		//セッションに格納しているアイテム名・値段・在庫で商品を追加
 		dao.createItem(
 				session.get("itemName").toString(),
 				Integer.parseInt(session.get("itemPrice").toString()),

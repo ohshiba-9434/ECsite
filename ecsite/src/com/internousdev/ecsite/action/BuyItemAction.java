@@ -17,14 +17,12 @@ public class BuyItemAction extends ActionSupport implements SessionAware {
 
 		String result;
 
-//		countの名前で変数countを格納する
 		session.put("count", count);
 
-//		取得した値をString型に変換した上でint型に変換する
 		int intCount = Integer.parseInt(session.get("count").toString());
 		int intPrice = Integer.parseInt(session.get("buyItem_price").toString());
 
-//		商品在庫の判定
+		//在庫が足りていれば支払い方法の表示
 		if (Integer.parseInt(session.get("item_stock").toString()) < intCount) {
 
 			setErrorMessage("在庫がありません。");

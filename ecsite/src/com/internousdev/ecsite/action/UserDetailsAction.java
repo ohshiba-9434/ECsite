@@ -20,6 +20,7 @@ public class UserDetailsAction extends ActionSupport implements SessionAware {
 		UserDetailsDAO dao = new UserDetailsDAO();
 		userInfoDTO = dao.getUserInfo(loginId);
 
+		//"ユーザーの情報はありません。"の表示
 		if (userInfoDTO.getLoginId() == null) {
 			userInfoDTO = null;
 		}

@@ -17,11 +17,11 @@ public class ItemDetailsAction extends ActionSupport implements SessionAware {
 
 	public String execute() throws SQLException {
 
-//		選択されたidを元に必要な情報を取り出す
+		//選択されたidを元に必要な情報を取り出す
 		ItemDetailsDAO dao = new ItemDetailsDAO();
 		itemDetailsDTO = dao.getItemInfo(id);
 
-//		"商品の詳細情報はありません。"を表示させる
+		//"商品の詳細情報はありません。"の表示
 		if (itemDetailsDTO.getItemName() == null) {
 			itemDetailsDTO = null;
 		}

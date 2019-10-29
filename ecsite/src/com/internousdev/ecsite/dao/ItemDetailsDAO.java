@@ -10,6 +10,7 @@ import com.internousdev.ecsite.util.DBConnector;
 
 public class ItemDetailsDAO {
 
+	//商品情報の取得
 	public ItemInfoDTO getItemInfo(String id) throws SQLException {
 
 		DBConnector db = new DBConnector();

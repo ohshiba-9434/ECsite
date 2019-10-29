@@ -9,6 +9,7 @@ import com.internousdev.ecsite.util.DateUtil;
 
 public class ItemCreateConpleteDAO {
 
+	//商品を新しく追加
 	public void createItem(String itemName, int itemPrice, int itemStock) throws SQLException {
 
 		DBConnector db = new DBConnector();

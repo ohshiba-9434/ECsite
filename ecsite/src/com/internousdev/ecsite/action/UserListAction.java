@@ -20,6 +20,7 @@ public class UserListAction extends ActionSupport implements SessionAware {
 
 		userList = userListDAO.getUserList();
 
+		//"ユーザーの情報はありません。"の表示
 		if (!(userList.size() > 0)) {
 			userList = null;
 		}

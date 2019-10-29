@@ -28,6 +28,7 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 		List<UserInfoDTO> userList = new ArrayList<UserInfoDTO>();
 		userList = userListDAO.getUserList();
 
+		//IDの重複チェック
 		for (UserInfoDTO check : userList) {
 			if (loginUserId.equals(check.getLoginId())) {
 				setOverlapMessage("すでに登録されているログインIDです。");
@@ -36,12 +37,10 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 			}
 		}
 
-//		loginUserIdが入力済みかの判定
 		if (!(loginUserId.equals(""))
 				&& !(loginPassword.equals(""))
 				&& !(userName.equals(""))) {
 
-//			入力済みであればセッションに格納する
 			session.put("loginUserId", loginUserId);
 			session.put("loginPassword", loginPassword);
 			session.put("userName", userName);

@@ -8,6 +8,7 @@ import com.internousdev.ecsite.util.DBConnector;
 
 public class ItemListDeleteCompleteDAO {
 
+	//商品の削除
 	public int itemListDelete() throws SQLException {
 
 		DBConnector db = new DBConnector();

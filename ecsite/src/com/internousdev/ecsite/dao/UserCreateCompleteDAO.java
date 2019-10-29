@@ -13,7 +13,6 @@ public class UserCreateCompleteDAO {
 	private Connection con = db.getConnection();
 	private DateUtil dateUtil = new DateUtil();
 
-//	ログインユーザー情報をテーブルに追加する
 	private String sql = "INSERT INTO login_user_transaction (login_id, login_pass, user_name, insert_date) VALUES(?, ?, ?, ?)";
 
 	public void createUser(String loginUserId, String loginUserPassword, String userName) throws SQLException {
@@ -25,8 +24,6 @@ public class UserCreateCompleteDAO {
 			ps.setString(3, userName);
 			ps.setString(4, dateUtil.getDate());
 
-//			execute() = PreparedStatementのあらゆる種類のSQL文を実行する
-//			戻り値はboolean型 trueかfalse
 			ps.execute();
 
 		} catch (Exception e) {

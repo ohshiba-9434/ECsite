@@ -11,6 +11,7 @@ import com.internousdev.ecsite.util.DBConnector;;
 
 public class ItemListDAO {
 
+	//商品情報のリストを取得
 	public ArrayList<ItemInfoDTO> getItemList() throws SQLException {
 
 		ArrayList<ItemInfoDTO> itemInfoDTO = new ArrayList<ItemInfoDTO>();

@@ -15,7 +15,6 @@ public class LoginDAO {
 
 	public LoginDTO getLoginUserInfo(String loginUserId, String loginPassword) {
 
-//		IDとパスワードを取得する
 		String sql = "SELECT * FROM login_user_transaction where login_id = ? AND login_pass = ?";
 
 		try {
@@ -25,14 +24,13 @@ public class LoginDAO {
 
 			ResultSet rs = ps.executeQuery();
 
-//			loginDTOに取得したID, パスワード, ユーザー名を格納する
 			if (rs.next()) {
 				loginDTO.setLoginId(rs.getString("login_id"));
 				loginDTO.setLoginPassword(rs.getString("login_pass"));
 				loginDTO.setUserName(rs.getString("user_name"));
 				loginDTO.setAdminFlg(rs.getString("admin_flg"));
 
-//				IDが空でないならloginFlgをtrueにする
+				//ログインフラグと管理者フラグの付与
 				if (rs.getString("login_id") != null) {
 					loginDTO.setLoginFlg(true);
 

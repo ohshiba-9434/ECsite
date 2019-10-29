@@ -14,12 +14,12 @@ public class MyPageDAO {
 	private DBConnector db = new DBConnector();
 	private Connection con = db.getConnection();
 
+	//ユーザー情報に紐付く商品購入履歴の取得
 	public ArrayList<MyPageDTO> getMyPageUserInfo
 	(String item_transaction_id, String user_master_id) throws SQLException {
 
 		ArrayList<MyPageDTO> myPageDTO = new ArrayList<MyPageDTO>();
 
-//		2つのテーブルを結合して降順に値を取得する
 		String sql =
 				"SELECT ubit.id, iit.item_name, ubit.total_price, ubit.total_count, ubit.pay, ubit.insert_date FROM user_buy_item_transaction ubit LEFT JOIN item_info_transaction iit ON ubit.item_transaction_id = iit.id WHERE ubit.item_transaction_id = ? AND ubit.user_master_id = ? ORDER BY insert_date DESC";
 
@@ -30,7 +30,6 @@ public class MyPageDAO {
 
 			ResultSet rs = ps.executeQuery();
 
-//			データがある分だけ格納を繰り返す
 			while(rs.next()) {
 				MyPageDTO dto = new MyPageDTO();
 				dto.setId(rs.getString("id"));
@@ -40,7 +39,6 @@ public class MyPageDAO {
 				dto.setPayment(rs.getString("pay"));
 				dto.setInsert_date(rs.getString("insert_date"));
 
-//				dtoに格納した6つの値をArrayListに格納する
 				myPageDTO.add(dto);
 			}
 		} catch (Exception e) {
@@ -52,6 +50,7 @@ public class MyPageDAO {
 		return myPageDTO;
 	}
 
+	//購入履歴削除
 	public int buyItemHistoryDelete
 	(String item_transaction_id, String user_master_id) throws SQLException {
 

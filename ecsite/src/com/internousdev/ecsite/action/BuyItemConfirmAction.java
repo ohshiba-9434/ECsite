@@ -15,7 +15,7 @@ public class BuyItemConfirmAction extends ActionSupport implements SessionAware 
 
 	public String execute() throws SQLException {
 
-//		DAOで格納した値をそれぞれ取得する
+		//購入件数を取得
 		int count = buyItemCompleteDAO.buyIteminfo(
 				session.get("id").toString(),
 				session.get("total_price").toString(),
@@ -23,7 +23,7 @@ public class BuyItemConfirmAction extends ActionSupport implements SessionAware 
 				session.get("login_user_id").toString(),
 				session.get("pay").toString());
 
-//		購入されると在庫を減らす
+		//購入された数量だけ在庫を減らす
 		if (count > 0) {
 			buyItemCompleteDAO.updateCount(Integer.parseInt(session.get("count").toString()), session.get("id").toString());
 		}

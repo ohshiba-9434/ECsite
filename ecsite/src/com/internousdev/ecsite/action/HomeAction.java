@@ -16,12 +16,11 @@ public class HomeAction extends ActionSupport implements SessionAware {
 
 		String result = "login";
 
-//		ログイン済み判定 (指定したキーが存在するか)
+		//ログイン済みかの判定
 		if (session.containsKey("login_user_id")) {
 			BuyItemDAO buyItemDAO = new BuyItemDAO();
 			BuyItemDTO buyItemDTO = buyItemDAO.getBuyItemInfo();
 
-//			存在したらid,itemName,itemPrice,itemStockをセッションに格納する
 			session.put("id", buyItemDTO.getId());
 			session.put("buyItem_name", buyItemDTO.getItemName());
 			session.put("buyItem_price", buyItemDTO.getItemPrice());

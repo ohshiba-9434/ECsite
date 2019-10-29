@@ -10,13 +10,13 @@ import com.internousdev.ecsite.util.DateUtil;
 public class BuyItemCompleteDAO {
 
 
+	//商品購入履歴の追加
 	public int buyIteminfo(String item_transaction_id, String total_price, String total_count, String user_master_id, String pay) throws SQLException {
 
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
 		DateUtil dateUtil = new DateUtil();
 
-//		商品購入履歴をテーブルに追加する
 		String sql = "INSERT INTO user_buy_item_transaction (item_transaction_id, total_price, total_count, user_master_id, pay, insert_date) VALUES(?, ?, ?, ?, ?, ?)";
 		int res = 0;
 
@@ -39,6 +39,7 @@ public class BuyItemCompleteDAO {
 		return res;
 	}
 
+	//商品在庫の更新
 	public void updateCount(int count, String id) throws SQLException {
 
 		DBConnector db = new DBConnector();

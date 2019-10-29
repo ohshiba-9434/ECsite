@@ -20,20 +20,18 @@ public class MyPageAction extends ActionSupport implements SessionAware {
 
 	public String execute() throws SQLException {
 
-//		指定したキーが存在するかの確認
 		if (!session.containsKey("login_user_id")) {
 			return ERROR;
 		}
 
-//		履歴の削除が行われるかの判定
+		//購入履歴の取得
 		if (deleteFlg == null) {
 			String item_transaction_id = session.get("id").toString();
 			String user_master_id = session.get("login_user_id").toString();
 
-//			DBから取得した履歴情報をmyPageListに格納
 			myPageList = myPageDAO.getMyPageUserInfo(item_transaction_id, user_master_id);
 
-//		削除ボタンを押下するとdeleteFlgに1が入り実行される
+		//削除ボタンの押下で購入履歴削除を実行
 		} else if(deleteFlg.equals("1")) {
 			delete();
 		}
@@ -44,14 +42,11 @@ public class MyPageAction extends ActionSupport implements SessionAware {
 
 	public void delete() throws SQLException {
 
-//		変数にセッションから得た値を代入する
 		String item_transaction_id = session.get("id").toString();
 		String user_master_id = session.get("login_user_id").toString();
 
-//		DBから削除した履歴の件数をresに格納
 		int res = myPageDAO.buyItemHistoryDelete(item_transaction_id, user_master_id);
 
-//		1件以上削除されているかの判定
 		if (res > 0) {
 			myPageList = null;
 			setMessage("商品情報を正しく削除しました。");

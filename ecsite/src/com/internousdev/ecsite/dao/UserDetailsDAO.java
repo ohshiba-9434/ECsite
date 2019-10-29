@@ -11,6 +11,7 @@ import com.internousdev.ecsite.util.DBConnector;
 public class UserDetailsDAO {
 	private DBConnector dbConnector = new DBConnector();
 	private Connection connection = dbConnector.getConnection();
+	
 	public UserInfoDTO getUserInfo(String loginId) throws SQLException {
 		UserInfoDTO dto = new UserInfoDTO();
 		String sql ="SELECT * FROM login_user_transaction WHERE login_id = ?";

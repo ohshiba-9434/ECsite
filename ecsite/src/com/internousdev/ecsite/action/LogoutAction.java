@@ -11,7 +11,6 @@ public class LogoutAction extends ActionSupport implements SessionAware {
 	public Map<String, Object> session;
 
 	public String execute() {
-//		セッションを破棄する
 		session.clear();
 		return SUCCESS;
 	}
